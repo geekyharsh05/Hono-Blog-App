@@ -1,25 +1,13 @@
 import { Hono } from "hono";
-import { userRouter } from "./routes/user.routes";
 import { Bindings } from "hono/types";
+import { blogRouter, userRouter } from "./routes";
+import { cors } from "hono/cors";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-app.route("/api/v1/", userRouter);
+app.use("*", cors());
 
-// app.route('/api/v1/blog')
-
-app.get("/api/v1/blog/:id", (c) => {
-  const id = c.req.param("id");
-  console.log(id);
-  return c.text("get blog route");
-});
-
-app.post("/api/v1/blog", (c) => {
-  return c.text("signin route");
-});
-
-app.put("/api/v1/blog", (c) => {
-  return c.text("signin route");
-});
+app.route("/api/v1/user", userRouter);
+app.route("/api/v1/blog", blogRouter);
 
 export default app;

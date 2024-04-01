@@ -1,3 +1,3 @@
-# Practicing serverless workers environemnt with hono using Typescript, Prisma & Postgres SQL as the database
+# Practicing serverless workers environment with hono using Typescript, Prisma & Postgres SQL as the database
 
 
